@@ -17,5 +17,6 @@ export default class TeamRoutes {
     this._teamController = new TeamController(this._teamServices);
 
     this.router.get('/', this._teamController.getAll);
+    this.router.get('/:id', this._teamController.getById);
   }
 }
