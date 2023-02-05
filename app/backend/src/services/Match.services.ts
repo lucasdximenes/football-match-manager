@@ -1,3 +1,4 @@
+import { badRequest } from '@hapi/boom';
 import IMatchServices from './interfaces/IMatchServices';
 import IMatchRepository from '../repositories/interfaces/IMatchRepository';
 import ITeamServices from './interfaces/ITeamServices';
@@ -29,5 +30,16 @@ export default class MatchServices implements IMatchServices {
 
     const newMatch = await this.matchRepository.createMatch(match);
     return newMatch;
+  }
+
+  public async finishMatch(matchId: number): Promise<void> {
+    const match = await this.matchRepository.getById(matchId);
+    if (!match) {
+      throw badRequest('Match not found');
+    }
+    if (!match.inProgress) {
+      throw badRequest('Match already finished');
+    }
+    await this.matchRepository.finishMatch(matchId);
   }
 }

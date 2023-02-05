@@ -5,4 +5,5 @@ export default interface IMatchServices {
   getAll(): Promise<Matches[]>;
   getByProgress(progress: boolean): Promise<Matches[]>;
   createMatch(match: newMatchBody): Promise<Match>;
+  finishMatch(matchId: number): Promise<void>;
 }
