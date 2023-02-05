@@ -14,7 +14,7 @@ export default class TeamServices implements ITeamServices {
   public async getById(id: number): Promise<Team> {
     const team = await this.teamRepository.getById(id);
     if (!team) {
-      throw notFound('Team not found');
+      throw notFound('There is no team with such id!');
     }
     return team;
   }
