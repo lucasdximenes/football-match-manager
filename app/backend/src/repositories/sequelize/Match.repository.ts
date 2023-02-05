@@ -1,5 +1,9 @@
 import Match from '../../database/models/Match';
-import { Matches, newMatchBody } from '../../interfaces/Match.interface';
+import {
+  Matches,
+  newMatchBody,
+  updateMatchBody,
+} from '../../interfaces/Match.interface';
 import IMatchRepository from '../interfaces/IMatchRepository';
 
 export default class MatchRepository implements IMatchRepository {
@@ -53,5 +57,14 @@ export default class MatchRepository implements IMatchRepository {
       { inProgress: false },
       { where: { id: matchId } },
     );
+  }
+
+  public async updateMatchGoals(
+    matchId: number,
+    matchUpdate: updateMatchBody,
+  ): Promise<Match> {
+    await this.matchModel.update(matchUpdate, { where: { id: matchId } });
+    const updatedMatch = await this.matchModel.findByPk(matchId);
+    return updatedMatch as Match;
   }
 }
