@@ -37,4 +37,13 @@ export default class MatchControllers implements IMatchControllers {
     });
     return res.status(201).json(newMatch);
   };
+
+  public finishMatch = async (
+    req: Request,
+    res: Response,
+  ): Promise<Response> => {
+    const { matchId } = req.params;
+    await this.matchServices.finishMatch(Number(matchId));
+    return res.status(200).json({ message: 'Finished' });
+  };
 }
