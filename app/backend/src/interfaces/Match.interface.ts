@@ -1,6 +1,6 @@
 import Match from '../database/models/Match';
 
-export default interface Matches extends Match {
+export interface Matches extends Match {
   id: number;
   homeTeamId: number;
   homeTeamGoals: number;
@@ -14,3 +14,10 @@ export default interface Matches extends Match {
     teamName: string;
   };
 }
+
+export type newMatchBody = {
+  homeTeamId: number;
+  awayTeamId: number;
+  homeTeamGoals: number;
+  awayTeamGoals: number;
+};
