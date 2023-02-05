@@ -1,5 +1,5 @@
 import Match from '../../database/models/Match';
-import Matches from '../../interfaces/Match.interface';
+import { Matches, newMatchBody } from '../../interfaces/Match.interface';
 import IMatchRepository from '../interfaces/IMatchRepository';
 
 export default class MatchRepository implements IMatchRepository {
@@ -36,5 +36,10 @@ export default class MatchRepository implements IMatchRepository {
       ],
     });
     return matches as unknown as Matches[];
+  }
+
+  public async createMatch(match: newMatchBody): Promise<Match> {
+    const newMatch = await this.matchModel.create(match);
+    return newMatch;
   }
 }
