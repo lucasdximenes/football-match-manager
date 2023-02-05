@@ -2,7 +2,11 @@ import { badRequest } from '@hapi/boom';
 import IMatchServices from './interfaces/IMatchServices';
 import IMatchRepository from '../repositories/interfaces/IMatchRepository';
 import ITeamServices from './interfaces/ITeamServices';
-import { Matches, newMatchBody } from '../interfaces/Match.interface';
+import {
+  Matches,
+  newMatchBody,
+  updateMatchBody,
+} from '../interfaces/Match.interface';
 import Match from '../database/models/Match';
 
 export default class MatchServices implements IMatchServices {
@@ -41,5 +45,23 @@ export default class MatchServices implements IMatchServices {
       throw badRequest('Match already finished');
     }
     await this.matchRepository.finishMatch(matchId);
+  }
+
+  public async updateMatchGoals(
+    matchId: number,
+    matchUpdate: updateMatchBody,
+  ): Promise<Match | void> {
+    const match = await this.matchRepository.getById(matchId);
+    if (!match) {
+      throw badRequest('Match not found');
+    }
+    if (!match.inProgress) {
+      throw badRequest('Match already finished');
+    }
+    const updatedMatch = await this.matchRepository.updateMatchGoals(
+      matchId,
+      matchUpdate,
+    );
+    return updatedMatch;
   }
 }
