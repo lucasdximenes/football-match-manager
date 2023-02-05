@@ -1,5 +1,6 @@
-import Match from '../../database/models/Match';
+import Matches from '../../interfaces/Match.interface';
 
 export default interface IMatchServices {
-  getAll(): Promise<Match[]>;
+  getAll(): Promise<Matches[]>;
+  getByProgress(progress: boolean): Promise<Matches[]>;
 }
