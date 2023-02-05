@@ -21,3 +21,8 @@ export type newMatchBody = {
   homeTeamGoals: number;
   awayTeamGoals: number;
 };
+
+export type updateMatchBody = {
+  homeTeamGoals: number;
+  awayTeamGoals: number;
+};
