@@ -44,5 +44,12 @@ export default class MatchRoutes {
       MatchValidations.validateNewMatchBody,
       this._matchController.createMatch,
     );
+
+    this.router.patch(
+      '/:matchId/finish',
+      UserValidations.validateToken,
+      MatchValidations.validateMatchIdParam,
+      this._matchController.finishMatch,
+    );
   }
 }
