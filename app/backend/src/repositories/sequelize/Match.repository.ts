@@ -21,6 +21,11 @@ export default class MatchRepository implements IMatchRepository {
     return matches as unknown as Matches[];
   }
 
+  public async getById(id: number): Promise<Match | null> {
+    const match = await this.matchModel.findByPk(id);
+    return match;
+  }
+
   public async getByProgress(inProgress: boolean): Promise<Matches[]> {
     const matches = await this.matchModel.findAll({
       where: { inProgress },
@@ -41,5 +46,12 @@ export default class MatchRepository implements IMatchRepository {
   public async createMatch(match: newMatchBody): Promise<Match> {
     const newMatch = await this.matchModel.create(match);
     return newMatch;
+  }
+
+  public async finishMatch(matchId: number): Promise<void> {
+    await this.matchModel.update(
+      { inProgress: false },
+      { where: { id: matchId } },
+    );
   }
 }

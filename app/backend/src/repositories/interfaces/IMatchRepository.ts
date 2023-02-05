@@ -3,6 +3,8 @@ import Match from '../../database/models/Match';
 
 export default interface IMatchRepository {
   getAll(): Promise<Matches[]>;
+  getById(id: number): Promise<Match | null>;
   getByProgress(progress: boolean): Promise<Matches[]>;
   createMatch(match: newMatchBody): Promise<Match>;
+  finishMatch(matchId: number): Promise<void>;
 }
