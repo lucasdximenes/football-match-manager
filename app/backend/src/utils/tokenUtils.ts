@@ -16,7 +16,7 @@ export default class tokenUtils {
       const decoded = jwt.verify(token, JWT_SECRET as string);
       return decoded as JwtPayload;
     } catch (err) {
-      throw unauthorized('Invalid token');
+      throw unauthorized('Token must be a valid token');
     }
   }
 }
