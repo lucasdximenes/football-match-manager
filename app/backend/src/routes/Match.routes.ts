@@ -32,17 +32,35 @@ export default class MatchRoutes {
   }
 
   private _initRoutes(): void {
+    this._initGetRoutes();
+    this._initPostRoutes();
+    this._initPatchRoutes();
+  }
+
+  private _initGetRoutes(): void {
     this.router.get(
       '/',
       MatchValidations.validateMatchInProgressQuery,
       this._matchController.getAll,
     );
+  }
 
+  private _initPostRoutes(): void {
     this.router.post(
       '/',
       UserValidations.validateToken,
       MatchValidations.validateNewMatchBody,
       this._matchController.createMatch,
+    );
+  }
+
+  private _initPatchRoutes(): void {
+    this.router.patch(
+      '/:matchId',
+      UserValidations.validateToken,
+      MatchValidations.validateMatchIdParam,
+      MatchValidations.validateUpdateMatchGoalsBody,
+      this._matchController.updateMatchGoals,
     );
 
     this.router.patch(
