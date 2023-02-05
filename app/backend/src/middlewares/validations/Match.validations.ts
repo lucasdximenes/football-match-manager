@@ -38,4 +38,21 @@ export default class MatchValidations {
 
     return next();
   };
+
+  static validateMatchIdParam = (
+    req: Request,
+    _res: Response,
+    next: NextFunction,
+  ) => {
+    const { matchId } = req.params;
+    if (!matchId) {
+      throw badRequest('matchId is required');
+    }
+
+    if (Number.isNaN(Number(matchId))) {
+      throw badRequest('matchId must be a number');
+    }
+
+    return next();
+  };
 }
