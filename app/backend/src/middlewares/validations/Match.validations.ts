@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { badRequest, badData } from '@hapi/boom';
-import newMatchBody from './schemas/Match.schemas';
+import { newMatchBody, updateMatchGoals } from './schemas/Match.schemas';
 
 export default class MatchValidations {
   static validateMatchInProgressQuery = (
@@ -51,6 +51,19 @@ export default class MatchValidations {
 
     if (Number.isNaN(Number(matchId))) {
       throw badRequest('matchId must be a number');
+    }
+
+    return next();
+  };
+
+  static validateUpdateMatchGoalsBody = (
+    req: Request,
+    _res: Response,
+    next: NextFunction,
+  ) => {
+    const { error } = updateMatchGoals.validate(req.body);
+    if (error) {
+      throw badRequest(error.message);
     }
 
     return next();

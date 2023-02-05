@@ -20,4 +20,16 @@ const newMatchBody = joi.object({
   user: joi.object(),
 });
 
-export default newMatchBody;
+const updateMatchGoals = joi.object({
+  homeTeamGoals: joi.number().required().messages({
+    'any.required': 'homeTeamGoals is required',
+    'number.base': 'homeTeamGoals must be a number',
+  }),
+  awayTeamGoals: joi.number().required().messages({
+    'any.required': 'awayTeamGoals is required',
+    'number.base': 'awayTeamGoals must be a number',
+  }),
+  user: joi.object(),
+});
+
+export { newMatchBody, updateMatchGoals };
