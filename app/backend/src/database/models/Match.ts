@@ -39,7 +39,7 @@ Match.init(
     inProgress: {
       type: BOOLEAN,
       allowNull: false,
-      defaultValue: false,
+      defaultValue: true,
     },
   },
   {
