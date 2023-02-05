@@ -1,6 +1,6 @@
 express-async-errors
 @hapi/boom
-zod
+joi
 morgan
 @types/morgan
 helmet
