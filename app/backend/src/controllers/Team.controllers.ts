@@ -15,4 +15,13 @@ export default class TeamControllers implements ITeamControllers {
     const team = await this.teamService.getById(Number(id));
     return res.status(200).json(team);
   };
+
+  public getLeaderboard = async (
+    req: Request,
+    res: Response,
+  ): Promise<Response> => {
+    const path = req.path.split('/');
+    const teams = await this.teamService.getLeaderboard(path[1]);
+    return res.status(200).json(teams);
+  };
 }
