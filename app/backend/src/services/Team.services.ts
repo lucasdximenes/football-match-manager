@@ -2,6 +2,7 @@ import { notFound } from '@hapi/boom';
 import Team from '../database/models/Team';
 import ITeamRepository from '../repositories/interfaces/ITeamRepository';
 import ITeamServices from './interfaces/ITeamServices';
+import Leaderboard from '../interfaces/Leaderboard.interface';
 
 export default class TeamServices implements ITeamServices {
   constructor(private teamRepository: ITeamRepository) {}
@@ -17,5 +18,10 @@ export default class TeamServices implements ITeamServices {
       throw notFound('There is no team with such id!');
     }
     return team;
+  }
+
+  public async getLeaderboard(type: string): Promise<Leaderboard[]> {
+    const teams = await this.teamRepository.getLeaderboard(type);
+    return teams;
   }
 }
