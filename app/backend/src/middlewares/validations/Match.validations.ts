@@ -45,9 +45,6 @@ export default class MatchValidations {
     next: NextFunction,
   ) => {
     const { matchId } = req.params;
-    if (!matchId) {
-      throw badRequest('matchId is required');
-    }
 
     if (Number.isNaN(Number(matchId))) {
       throw badRequest('matchId must be a number');
