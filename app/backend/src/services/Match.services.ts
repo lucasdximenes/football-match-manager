@@ -1,4 +1,4 @@
-import { badRequest } from '@hapi/boom';
+import { notFound, badData } from '@hapi/boom';
 import IMatchServices from './interfaces/IMatchServices';
 import IMatchRepository from '../repositories/interfaces/IMatchRepository';
 import ITeamServices from './interfaces/ITeamServices';
@@ -39,10 +39,10 @@ export default class MatchServices implements IMatchServices {
   public async finishMatch(matchId: number): Promise<void> {
     const match = await this.matchRepository.getById(matchId);
     if (!match) {
-      throw badRequest('Match not found');
+      throw notFound('Match not found');
     }
     if (!match.inProgress) {
-      throw badRequest('Match already finished');
+      throw badData('Match already finished');
     }
     await this.matchRepository.finishMatch(matchId);
   }
@@ -53,10 +53,10 @@ export default class MatchServices implements IMatchServices {
   ): Promise<Match | void> {
     const match = await this.matchRepository.getById(matchId);
     if (!match) {
-      throw badRequest('Match not found');
+      throw notFound('Match not found');
     }
     if (!match.inProgress) {
-      throw badRequest('Match already finished');
+      throw badData('Match already finished');
     }
     const updatedMatch = await this.matchRepository.updateMatchGoals(
       matchId,
