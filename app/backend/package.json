@@ -4,7 +4,6 @@
   "description": "",
   "main": "./build/server",
   "scripts": {
-    "build": "/bin/sh tsc_eval.sh",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
     "test:coverage": "nyc npm run test",
     "test:coverage:json": "nyc --reporter=json-summary npm run test",
@@ -28,6 +27,7 @@
     "@types/express": "4.17.13",
     "@types/jsonwebtoken": "8.5.6",
     "@types/mocha": "9.1.0",
+    "@types/morgan": "^1.9.4",
     "@types/node": "16.11.7",
     "@types/sequelize": "4.28.10",
     "@types/sinon": "10.0.11",
@@ -52,8 +52,7 @@
     "typescript": "4.4.4"
   },
   "dependencies": {
-    "@hapi/boom": "^10.0.0",
-    "@types/morgan": "^1.9.4",
+    "@hapi/boom": "^10.0.1",
     "bcryptjs": "2.4.3",
     "cors": "2.8.5",
     "dotenv": "10.0.0",
@@ -61,7 +60,7 @@
     "express-async-errors": "^3.1.1",
     "helmet": "^6.0.1",
     "jest": "27.4.3",
-    "joi": "^17.7.0",
+    "joi": "^17.7.1",
     "jsonwebtoken": "8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "2.3.3",
