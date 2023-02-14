@@ -98,17 +98,17 @@ npm run test
 
 ### Authentication
 
-`/login` POST - Authenticates the user and returns a JWT token.
-`/login/validate` GET - Validates the JWT token and returns the user type (admin or user).
-`/teams` GET - Returns all registered teams
-`/teams/:id` GET - Returns a team by ID
-`/matches` GET - Returns all registered matches
-`/matches` POST - Registers a match
-`/matches/:id` PATCH - Updates the goals of a match
-`/matches/:id/finish` PATCH - Finishes a match
-`/leaderboard` GET - Returns the overall ranking
-`/leaderboard/home` GET - Returns home team ranking
-`/leaderboard/away` GET - Returns away team ranking
+- `/login` POST - Authenticates the user and returns a JWT token.
+- `/login/validate` GET - Validates the JWT token and returns the user type (admin or user).
+- `/teams` GET - Returns all registered teams
+- `/teams/:id` GET - Returns a team by ID
+- `/matches` GET - Returns all registered matches
+- `/matches` POST - Registers a match
+- `/matches/:id` PATCH - Updates the goals of a match
+- `/matches/:id/finish` PATCH - Finishes a match
+- `/leaderboard` GET - Returns the overall ranking
+- `/leaderboard/home` GET - Returns home team ranking
+- `/leaderboard/away` GET - Returns away team ranking
 
 ---
 

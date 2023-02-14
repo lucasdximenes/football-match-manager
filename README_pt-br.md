@@ -98,17 +98,17 @@ npm run test
 
 ### Autenticação
 
-`/login` POST - Autentica o usuário e retorna um token JWT.
-`/login/validate` GET - Valida o token JWT e retorna o tipo de usuário (admin ou user).
-`/teams` GET - Retorna todos os times cadastrados
-`/teams/:id` GET - Retorna um time por ID
-`/matches` GET - Retorna todas as partidas cadastradas
-`/matches` POST - Cadastra uma partida
-`/matches/:id` PATCH - Atualiza os gols de uma partida
-`/matches/:id/finish` PATCH - Finaliza uma partida
-`/leaderboard` GET - Retorna a classificação geral
-`/leaderboard/home` GET - Retorna a classificação do time da casa
-`/leaderboard/away` GET - Retorna a classificação do time visitante
+- `/login` POST - Autentica o usuário e retorna um token JWT.
+- `/login/validate` GET - Valida o token JWT e retorna o tipo de usuário (admin ou user).
+- `/teams` GET - Retorna todos os times cadastrados
+- `/teams/:id` GET - Retorna um time por ID
+- `/matches` GET - Retorna todas as partidas cadastradas
+- `/matches` POST - Cadastra uma partida
+- `/matches/:id` PATCH - Atualiza os gols de uma partida
+- `/matches/:id/finish` PATCH - Finaliza uma partida
+- `/leaderboard` GET - Retorna a classificação geral
+- `/leaderboard/home` GET - Retorna a classificação do time da casa
+- `/leaderboard/away` GET - Retorna a classificação do time visitante
 
 ---
 
